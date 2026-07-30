@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeSkins — Халявные скины CS2, кейсы и бонусы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Твой глубокий изумрудный, переходящий в более темный по краям для объема */
+      --bg-base: #173f35;
+      --bg-gradient: radial-gradient(circle at 50% 0%, #1e5245 0%, #0d2620 100%);
+      --accent: #C3F25C;
+      --accent-hover: #d1f774;
+      --text-main: #ffffff;
+      --text-muted: #aebdb6;
+      --card-bg: rgba(0, 0, 0, 0.25);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(195, 242, 92, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-gradient);
+      background-color: var(--bg-base);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-top: 80px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Расширенный контейнер для сетки 2х2 */
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ШАПКА */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(13, 38, 32, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 22px; letter-spacing: -0.5px;
+    }
+    .logo svg { width: 28px; height: 28px; }
+    nav { display: flex; gap: 24px; font-weight: 600; font-size: 15px; }
+    nav a { color: var(--text-muted); transition: color 0.3s; }
+    nav a:hover { color: var(--accent); }
+
+    /* ГЛАВНЫЙ ЭКРАН */
+    .hero { text-align: center; padding: 80px 0 60px; }
+    .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { color: var(--text-muted); font-size: 18px; margin-bottom: 32px; }
+    
+    .btn-main {
+      display: inline-block;
+      background: var(--accent);
+      color: #0d2620;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(195, 242, 92, 0.2);
+    }
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(195, 242, 92, 0.4);
+      background: var(--accent-hover);
+    }
+
+    /* ЗАГОЛОВКИ БЛОКОВ */
+    .section-title {
+      font-size: 24px; font-weight: 700; margin: 60px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    /* СЕТКА КАРТОЧЕК */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    /* Растягиваем некоторые элементы на всю ширину сетки */
+    .full-width { grid-column: 1 / -1; }
+
+    /* ДИЗАЙН КАРТОЧЕК */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      backdrop-filter: blur(8px);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-top { display: flex; align-items: flex-start; gap: 16px; }
+    
+    .card-avatar {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(195, 242, 92, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 24px; color: var(--accent);
+      border: 1px solid rgba(195, 242, 92, 0.2);
+      flex-shrink: 0;
+    }
+
+    .card-info { flex-grow: 1; }
+    .card-info h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+    .card-info p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+
+    .card-note {
+      font-size: 12px; font-weight: 600; color: #ff8a8a;
+      background: rgba(255, 138, 138, 0.1);
+      padding: 6px 12px; border-radius: 6px;
+      align-self: flex-start;
+      margin-top: -8px;
+    }
+
+    /* КНОПКИ В КАРТОЧКАХ (Прозрачные с ярким бордером) */
+    .btn-action {
+      display: block; width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      text-align: center; padding: 14px;
+      border-radius: 12px; font-weight: 600; font-size: 14px;
+      transition: all 0.3s ease;
+      margin-top: auto; /* Прижимает кнопку к низу карточки */
+    }
+    .btn-action:hover {
+      background: var(--accent);
+      color: #0d2620;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(195, 242, 92, 0.3);
+    }
+
+    /* СПЕЦИАЛЬНАЯ КАРТОЧКА VPN (Выделяется) */
+    .card-special {
+      background: linear-gradient(135deg, rgba(195, 242, 92, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+      border-color: rgba(195, 242, 92, 0.3);
+    }
+    .card-special .card-avatar { background: var(--accent); color: #0d2620; }
+    .card-special .btn-action { background: var(--accent); color: #0d2620; border: none; }
+    .card-special .btn-action:hover { background: var(--accent-hover); box-shadow: 0 4px 20px rgba(195, 242, 92, 0.4); }
+    
+    .badge {
+      background: var(--accent); color: #0d2620;
+      font-size: 11px; font-weight: 700; padding: 3px 8px;
+      border-radius: 6px; margin-left: 8px; vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    /* КНОПКИ ДЛЯ СМС (В ряд) */
+    .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: auto; }
+
+    /* АККОРДЕОН FAQ */
+    .faq-item {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; margin-bottom: 12px; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(255, 255, 255, 0.2); }
+    .faq-trigger {
+      width: 100%; background: none; border: none; color: var(--text-main);
+      padding: 20px 24px; text-align: left; font-family: inherit;
+      font-size: 16px; font-weight: 600; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-trigger::after {
+      content: '+'; font-size: 24px; font-weight: 400;
+      color: var(--accent); transition: transform 0.3s;
+    }
+    .faq-item.active .faq-trigger::after { transform: rotate(45deg); }
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    .faq-content p { padding: 0 24px 20px 24px; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+    /* ФУТЕР */
+    footer {
+      text-align: center; padding: 60px 0 40px;
+      color: rgba(255, 255, 255, 0.3); font-size: 13px; font-weight: 500;
+    }
+
+    /* АДАПТИВНОСТЬ */
+    @media screen and (max-width: 768px) {
+      .grid-container { grid-template-columns: 1fr; } /* На планшетах и телефонах схлопывается в 1 столбец */
+      .btn-group { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 34px; }
+    }
+    @media screen and (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .header-wrap nav { display: none; } /* Прячем меню на мелких экранах для чистоты */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-wrap">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18L2 15L3 8L8 6L11 8.5L20 8L22 9.5L21 11.5L12 12L11 14.5L9 15.5L4 18Z" fill="#C3F25C"/>
+          <path d="M12 12L21 11.5L22 13L14 14.5L12 12Z" fill="#A8D644"/>
+          <path d="M2 15L4 14L8 14.5L9 15.5L4 18L2 15Z" fill="#7FA42D"/>
+        </svg>
+        <span>FreeSkins</span>
+      </div>
+      <nav>
+        <a href="#">Главная</a>
+        <a href="#links">Ссылки</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="hero">
+      <h1>Забирай халявные<br>скины и кейсы CS2</h1>
+      <p>Актуальные бонусы, промокоды и раздачи каждый день</p>
+      <a href="#links" class="btn-main">Смотреть ссылки</a>
+    </section>
+
+    <div class="grid-container" id="links">
+      
+      <div class="card card-special full-width">
+        <div class="card-top">
+          <div class="card-avatar">V</div>
+          <div class="card-info">
+            <h3>Лучший VPN для России <span class="badge">Топ</span></h3>
+            <p>С обходом ограничений связи. 3 дня бесплатно при регистрации по ссылке.</p>
+          </div>
+        </div>
+        <a href="https://t.me/Unlock_Net_bot?start=ref_318010765" target="_blank" class="btn-action">Получить 3 дня бесплатно</a>
+      </div>
+
+      <h2 class="section-title full-width">🎮 Халявные скины CS2</h2>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">V</div>
+          <div class="card-info">
+            <h3>Vibee</h3>
+            <p>Халявный кейс по ссылке. А так же ежедневный дроп за аватарку в стим.</p>
+          </div>
+        </div>
+        <a href="https://vibeee.ru/case/20?owner=5970&token=df0c6aa5d4b5" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">S</div>
+          <div class="card-info">
+            <h3>StarDrop</h3>
+            <p>Бесплатные кейсы и скины CS2 за регистрацию по ссылке</p>
+          </div>
+        </div>
+        <a href="https://t.me/StarDropCs2Bot?startapp=318010765" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">S</div>
+          <div class="card-info">
+            <h3>SHOT</h3>
+            <p>Открывай кейсы и выводи скины CS2 — бонус новичкам</p>
+          </div>
+        </div>
+        <a href="https://t.me/cs_shot_bot/app?startapp=ref_318010765" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">S</div>
+          <div class="card-info">
+            <h3>SKINOZ</h3>
+            <p>Скины CS2 бесплатно — забирай бонус за переход</p>
+          </div>
+        </div>
+        <a href="https://t.me/skinozbot?start=YnJ7RVRkbQVY" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">E</div>
+          <div class="card-info">
+            <h3>EZZZ SKIN</h3>
+            <p>Халявные скины CS2 — бонус за вход по ссылке</p>
+          </div>
+        </div>
+        <a href="https://telegram.me/ezzzskinbot/app?startapp=friend_318010765-ref_318010765" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">S</div>
+          <div class="card-info">
+            <h3>SKINFIGHTS</h3>
+            <p>Батлы и кейсы со скинами CS2 — стартовый бонус внутри</p>
+          </div>
+        </div>
+        <a href="https://t.me/skinfights_bot/SkinFights?startapp=eyJpbnZpdGVkX2J5IjoiOTJlYzZkY2YtMmY3Ni00MmNmLWI3MTYtNTA1NzkwZWZmYTM3IiwicHJvbW9fY29kZV9hbGlhcyI6bnVsbCwiY21wIjpudWxsfQ" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">B</div>
+          <div class="card-info">
+            <h3>Bloody</h3>
+            <p>6 приветственных бесплатных кейсов. Ежедневные дропы и премиум за серию 7 дней.</p>
+          </div>
+        </div>
+        <div class="card-note">Вывод при депозите от 1$</div>
+        <a href="https://bloodycase.com/p/R1148781" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">C</div>
+          <div class="card-info">
+            <h3>csgocases</h3>
+            <p>Каждый день до 7 халявных кейсов</p>
+          </div>
+        </div>
+        <a href="https://csgocases.com/r/n736084kz" target="_blank" class="btn-action">Забрать халяву</a>
+      </div>
+
+      <h2 class="section-title full-width">🎡 Крути кейсы с бонусом</h2>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">F</div>
+          <div class="card-info">
+            <h3>FaceDrop</h3>
+            <p>+40% при пополнении с кодом: <strong>REFF8BF8EE0</strong></p>
+          </div>
+        </div>
+        <a href="https://forcedrop.fun/refill" target="_blank" class="btn-action">Вводи тут</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-avatar">M</div>
+          <div class="card-info">
+            <h3>mycs</h3>
+            <p>+20% к депу по промокоду: <strong>ILLU</strong>. Кейсы от 7р.</p>
+          </div>
+        </div>
+        <a href="https://mycs2.in/refill" target="_blank" class="btn-action">Вводи тут</a>
+      </div>
+
+      <h2 class="section-title full-width">📲 Приём СМС и аренда номеров</h2>
+
+      <div class="card full-width">
+        <div class="card-top">
+          <div class="card-avatar">F</div>
+          <div class="card-info">
+            <h3>FAST SMS</h3>
+            <p>Приём СМС и аренда виртуальных +888 номеров — пользуйтесь, пока работает 😉</p>
+          </div>
+        </div>
+        <div class="btn-group">
+          <a href="https://t.me/FastSMSpro_Bot?start=318010765" target="_blank" class="btn-action">Перейти в ТГ</a>
+          <a href="https://smsfast.pro/?ref=920619" target="_blank" class="btn-action">Еще круче на сайте</a>
+        </div>
+      </div>
+
+    </div> <section id="faq" style="margin-top: 40px;">
+      <h2 class="section-title">Вопросы и ответы</h2>
+      
+      <div class="faq-item">
+        <button class="faq-trigger">Это безопасно?</button>
+        <div class="faq-content">
+          <p>Да. Ты просто регистрируешься в сервисе по ссылке и получаешь бонус — ничего лишнего не требуется.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">Как часто добавляются ссылки?</button>
+        <div class="faq-content">
+          <p>Каждый день. Заглядывай почаще, чтобы не пропустить свежую халяву.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">Нужно ли что-то покупать?</button>
+        <div class="faq-content">
+          <p>Не обязательно, сервисов с бесплатными кейсами я дал значительно больше чем с депозитом. Выбирать вам.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 FreeSkins. Не является публичной офертой.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Скрипт аккордеона FAQ
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const content = item.querySelector('.faq-content');
+        
+        if (item.classList.contains('active')) {
+          content.style.maxHeight = null;
+          item.classList.remove('active');
+        } else {
+          document.querySelectorAll('.faq-item').forEach(el => {
+            el.classList.remove('active');
+            el.querySelector('.faq-content').style.maxHeight = null;
+          });
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+
+    // Плавный скролл
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.length > 1) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            window.scrollTo({
+              top: targetEl.offsetTop - 90,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
